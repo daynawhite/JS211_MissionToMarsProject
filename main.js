@@ -1,7 +1,6 @@
 'use strict';
 const assert = require('assert');
 
-// This is an object that has types of jobs and the values each provide.
 const jobTypes = {
   pilot: 'MAV',
   mechanic: 'Repair Ship',
@@ -9,17 +8,36 @@ const jobTypes = {
   programmer: 'Any Ship!'
 };
 
-// Your code will go here
+class CrewMember {
+  constructor(_name, _job, _specialSkill) {
+    this.name = _name
+    this.job = _job
+    this.specialSkill = _specialSkill
+    this.ship = null
+  }
+
+  enterShip(Ship) {
+    this.ship = Ship
+    Ship.crew.push(this)
+  }
+}
+
+class Ship {
+  constructor(name, type, ability) {
+    this.name = name
+    this.type = type
+    this.ability = ability
+    this.crew = []
+    this.crew.length = 0
+  }
+  missionStatement() {
+    if (this.crew.length) {
+      return this.ability 
+    } else return "Can't perform a mission yet."
+     }
+}
 
 
-
-
-
-
-
-// Begin by reading the tests and building a function that will full each one.
-// As you build, you might not have to build them in order, maybe you do...
-// These are the tests
 if (typeof describe === 'function'){
   describe('CrewMember', function(){
     it('should have a name, a job, a specialSkill and ship upon instantiation', function(){
