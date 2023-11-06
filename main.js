@@ -16,9 +16,9 @@ class CrewMember {
     this.ship = null
   }
 
-  enterShip(Ship) {
-    this.ship = Ship
-    Ship.crew.push(this)
+  enterShip(shipEntered) {
+    this.ship = shipEntered
+    shipEntered.crew.push(this)
   }
 }
 
